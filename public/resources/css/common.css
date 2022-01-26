@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+@import "font.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  max-width: 100%;
+  vertical-align: top;
+}
+li {
+  list-style: none;
+}
+body {
+  font-size: 16px;
+  letter-spacing: -0.03em;
+  font-family: webFontInterstate, sans-serif;
+}
+p {
+  word-break: keep-all;
+}
+
+body.KR {
+  font-family: webFontIBMPlexSans, sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+  font-size: inherit;
+  font-weight: 400;
+}
+button {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  background: none;
+  cursor: pointer;
+}
+
+.blind {
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination__direction {
+  display: block;
+  background-image: url("../imgs/icons/icon_direction_right-c_gray.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  line-height: 60px;
+  overflow: hidden;
+  height: 16px;
+  width: 8px;
+}
+.pagination__direction.prev {
+  margin-right: 16px;
+}
+
+.pagination__direction.next {
+  transform: rotate(180deg);
+  margin-left: 16px;
+}
+
+.pagination__number {
+  display: block;
+  line-height: 60px;
+  overflow: hidden;
+  margin: 0 9px;
+  width: 6px;
+  height: 6px;
+  background-color: #D3D3DF;
+}
+.pagination__number.current-page {
+  background-color: #645AFA;
+}
