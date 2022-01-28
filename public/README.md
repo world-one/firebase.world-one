@@ -1,2 +1,0 @@
-# Seil.Jeong.Gitlab.Io
-
