@@ -15,14 +15,16 @@ export default Main;
 
 const MainContainer = styled.div`
   .sky {
+    position: relative;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     overflow: hidden;
     background-color: #50bcdf;
   }
   .sky__cloud {
     position: absolute;
     top: 120px;
+    left: 0;
     text-align: center;
     padding-top: 30px;
     background-color: #fff;
@@ -34,10 +36,10 @@ const MainContainer = styled.div`
 
   @keyframes move {
     0% {
-      transform: translateX(-100%);
+      transform: translateX(0%);
     }
     100% {
-      transform: translateX(100vw);
+      transform: translateX(120vw);
     }
   }
 `;
