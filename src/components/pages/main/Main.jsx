@@ -6,6 +6,8 @@ const Main = () => {
     <MainContainer>
       <section className='sky'>
          <div className='sky__cloud'>Hello</div>
+         <div className='sky__cloud'>Front-End Developer</div>
+         <div className='sky__cloud'>Jeong Se-il</div>
       </section>
     </MainContainer>
   )
@@ -19,27 +21,65 @@ const MainContainer = styled.div`
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background-color: #50bcdf;
+    background: linear-gradient(180deg, #50bcdf, #fff);
   }
   .sky__cloud {
     position: absolute;
-    top: 120px;
-    left: 0;
+    display: flex;
+    justify-content: center;
     text-align: center;
-    padding-top: 30px;
+    top: 110px;
+    left: 0;
     background-color: #fff;
     width: 140px;
     height: 50px;
-    border-radius: 20px;
-    animation: move 10s linear infinite;
+    border-radius: 40px;
+    
+    &::before {
+      z-index: -1;
+      position: absolute;
+      right: 4px;
+      bottom: 0;
+      background-color: #fff;
+      display: block;
+      content: '';
+      width: 80px;
+      height: 90px;
+      border-radius: 45px;
+    }
+    &::after {
+      z-index: -1;
+      position: absolute;
+      left: 16px;
+      bottom: 0;
+      background-color: #fff;
+      display: block;
+      content: '';
+      width: 60px;
+      height: 80px;
+      border-radius: 45px;
+    }
+
+    &:nth-child(1) {
+      transform: scale(2.2);
+      animation: move 20s linear infinite;
+    }  
+    &:nth-child(2) {
+      top: 180px;
+      animation: move 24s linear infinite alternate;
+    }
+    &:nth-child(3) {
+      top: 300px;
+      animation: move 16s linear infinite;
+    }
   }
 
   @keyframes move {
     0% {
-      transform: translateX(0%);
+      transform: translateX(-100%);
     }
     100% {
-      transform: translateX(120vw);
+      transform: translateX(calc(100vw + 100%));
     }
   }
 `;
