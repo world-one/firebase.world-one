@@ -5,15 +5,84 @@ const Main = () => {
   return (
     <MainContainer>
       <section className='sky'>
-         <div className='sky__cloud'>Hello</div>
-         <div className='sky__cloud'>Front-End Developer</div>
-         <div className='sky__cloud'>Jeong Se-il</div>
+        <Sun />
+        <div>
+          <div className='sky__cloud'>Hello</div>
+          <div className='sky__cloud'>Front-End Developer</div>
+          <div className='sky__cloud'>Jeong Se-il</div>
+          <Cloud />
+        </div>
       </section>
     </MainContainer>
   )
 }
 
 export default Main;
+
+const Sun = styled.div`
+  position: absolute;
+  right: 100px;
+  top: 60px;
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  background-color: #fbac13;
+  box-shadow: inset 0px 0px 30px yellow;
+`;
+
+const Cloud = ({}) => {
+  return (
+    <StyledCloud>
+      {[0,1,2].map((item, index) => <CloudShape key={index} />)}
+    </StyledCloud>
+  )
+}
+
+function getRandomInt(min = 10, max = 50) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; 
+}
+
+const CloudShape = styled.span`
+  position: absolute;
+  display: block;
+  height: ${() => getRandomInt(60, 90)}px;
+  width: ${() => getRandomInt(60, 70)}px;
+  border-radius: 120px;
+  background-color: #fff;
+
+
+  &:nth-child(1) {
+     bottom: 0;
+     top: auto;
+     left: 0;
+    }  
+    &:nth-child(2) {
+      bottom: 0;
+      right: 0;
+    }
+    &:nth-child(3) {
+      top: 0;
+    }
+`;
+const StyledCloud = styled.div`
+   position: absolute;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    top: 110px;
+    left: 0;
+    background-color: #fff;
+    width: 140px;
+    height: 50px;
+    border-radius: 40px;
+    opacity: 0.9;
+
+    animation: move 12s linear infinite;
+
+`;
+
 
 const MainContainer = styled.div`
   .sky {
@@ -34,6 +103,7 @@ const MainContainer = styled.div`
     width: 140px;
     height: 50px;
     border-radius: 40px;
+    opacity: 0.9;
     
     &::before {
       z-index: -1;
