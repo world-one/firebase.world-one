@@ -10,7 +10,7 @@ const Main = () => {
           <div className='sky__cloud'>Hello</div>
           <div className='sky__cloud'>Front-End Developer</div>
           <div className='sky__cloud'>Jeong Se-il</div>
-          <Cloud />
+          {text.map((item, index) => <Cloud key={index} index={index}>{item}</Cloud>)}
         </div>
       </section>
     </MainContainer>
@@ -18,7 +18,6 @@ const Main = () => {
 }
 
 export default Main;
-
 const Sun = styled.div`
   position: absolute;
   right: 100px;
@@ -29,11 +28,11 @@ const Sun = styled.div`
   background-color: #fbac13;
   box-shadow: inset 0px 0px 30px yellow;
 `;
-
-const Cloud = ({}) => {
+const text = ['Hello', 'Front-End Developer', 'Jeong Se-il', 'Typescript', 'Javascript']
+const Cloud = ({ index }) => {
   return (
-    <StyledCloud>
-      {[0,1,2].map((item, index) => <CloudShape key={index} />)}
+    <StyledCloud index={index}>
+      {[0,1,2,3,4].map((item, index) => <CloudShape key={index} />)}
     </StyledCloud>
   )
 }
@@ -52,18 +51,25 @@ const CloudShape = styled.span`
   border-radius: 120px;
   background-color: #fff;
 
-
   &:nth-child(1) {
      bottom: 0;
-     top: auto;
-     left: 0;
+     left: 10px;
     }  
     &:nth-child(2) {
       bottom: 0;
-      right: 0;
+      right: 8px;
     }
     &:nth-child(3) {
+      bottom: 0;
+      left: 25%;
+    }
+    &:nth-child(4) {
       top: 0;
+      left: 24px;
+    }
+    &:nth-child(5) {
+      top: 0;
+      right: 4px;
     }
 `;
 const StyledCloud = styled.div`
@@ -71,15 +77,15 @@ const StyledCloud = styled.div`
     display: flex;
     justify-content: center;
     text-align: center;
-    top: 110px;
-    left: 0;
+    top: ${({ index }) => getRandomInt(80, 560)}px;
+    left: ${({ index }) => getRandomInt(0, 100)}vw;
     background-color: #fff;
     width: 140px;
     height: 50px;
     border-radius: 40px;
     opacity: 0.9;
 
-    animation: move 12s linear infinite;
+    animation: move ${({ index }) => getRandomInt(10, 24)}s linear infinite;
 
 `;
 
