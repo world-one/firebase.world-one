@@ -18,7 +18,7 @@ const Main = () => {
 
 export default Main;
 
-const CONTENTS = ['Hello', 'Front-End Developer', 'Jeong Se-il', 'Typescript', 'Javascript']
+const CONTENTS = ['Hello', 'Front-End Developer', 'Jeong Se-il', 'Typescript', 'Javascript', 'React', 'Next']
 
 const MainContainer = styled.div`
   .sky {
@@ -27,19 +27,6 @@ const MainContainer = styled.div`
     width: 100vw;
     overflow: hidden;
     background: linear-gradient(180deg, #50bcdf, #fff);
-  }
-  
-  @keyframes move {
-    0% {
-      opacity: 0;
-      transform: translateX(-100%);
-    }
-    10% {
-      opacity: 0.9;
-    }
-    100% {
-      transform: translateX(calc(100vw + 100%));
-    }
   }
 `;
 

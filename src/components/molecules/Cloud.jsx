@@ -4,8 +4,8 @@ import { getRandomInt } from '../../utils/common';
 
 const Cloud = ({ index, children }) => {
   return (
-    <StyledCloud index={index}>
-      {[0,1,2,3,4].map((item, index) => <CloudShape key={index} />)}
+    <StyledCloud index={index} width={getRandomInt(80, 200)}>
+      {[0, 1, 2, 3, 4].map((item, index) => <CloudShape key={index} />)}
       <span className='content'>{children}</span>
     </StyledCloud>
   )
@@ -19,14 +19,24 @@ const StyledCloud = styled.div`
     justify-content: center;
     text-align: center;
     top: ${({ index }) => getRandomInt(80, 560)}px;
-    left: ${({ index }) => getRandomInt(0, 100)}vw;
+    ${({ index }) => {
+    if (index % 2 === 0) {
+      return `right: 0;
+        animation-name: moveToLeft;
+      `;
+    }
+    return `left: 0;
+      animation-name: moveToRight;
+      `;
+  }};
     background-color: #fff;
-    width: 140px;
+    width: ${({ width }) => width}px;
     height: 50px;
     border-radius: 40px;
-    opacity: 0.9;
-
-    animation: move ${({ index }) => getRandomInt(10, 24)}s linear infinite;
+    opacity: 0.8;
+    animation-duration: ${({ index }) => getRandomInt(16, 32)}s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 
     .content {
       position: absolute;
@@ -34,13 +44,31 @@ const StyledCloud = styled.div`
       transform: translateY(-50%);
 
     }
+
+    @keyframes moveToRight {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(calc(100vw + 100%));
+      }
+    }
+
+    @keyframes moveToLeft {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(calc(-100vw - 100%));
+      }
+    }
 `;
 
 const CloudShape = styled.span`
   position: absolute;
   display: block;
   height: ${() => getRandomInt(60, 90)}px;
-  width: ${() => getRandomInt(60, 70)}px;
+  width: ${() => getRandomInt(60, 120)}px;
   border-radius: 120px;
   background-color: #fff;
 
