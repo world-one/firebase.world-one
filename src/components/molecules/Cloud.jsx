@@ -4,7 +4,7 @@ import { getRandomInt } from '../../utils/common';
 
 const Cloud = ({ index, children }) => {
   return (
-    <StyledCloud index={index} width={getRandomInt(80, 200)}>
+    <StyledCloud index={index} width={getRandomInt(90, 200)}>
       {[0, 1, 2, 3, 4].map((item, index) => <CloudShape key={index} />)}
       <span className='content'>{children}</span>
     </StyledCloud>
@@ -18,9 +18,9 @@ const StyledCloud = styled.div`
     display: flex;
     justify-content: center;
     text-align: center;
-    top: ${({ index }) => getRandomInt(80, 560)}px;
-    ${({ index }) => {
-    if (index % 2 === 0) {
+    top: ${() => getRandomInt(10, 400)}px;
+    ${() => {
+    if (getRandomInt(0, 2) % 2 === 0) {
       return `right: 0;
         animation-name: moveToLeft;
       `;
@@ -34,15 +34,18 @@ const StyledCloud = styled.div`
     height: 50px;
     border-radius: 40px;
     opacity: 0.8;
-    animation-duration: ${({ index }) => getRandomInt(16, 32)}s;
+    animation-duration: ${() => getRandomInt(12, 48)}s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+
 
     .content {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-
+      color: coral;
+      text-shadow: 0 0 1px rgba(0,0,0,0.2);
+      font-weight: bold;
     }
 
     @keyframes moveToRight {
@@ -67,29 +70,29 @@ const StyledCloud = styled.div`
 const CloudShape = styled.span`
   position: absolute;
   display: block;
-  height: ${() => getRandomInt(60, 90)}px;
-  width: ${() => getRandomInt(60, 120)}px;
+  height: ${() => getRandomInt(80, 90)}px;
+  width: ${() => getRandomInt(80, 90)}px;
   border-radius: 120px;
   background-color: #fff;
 
   &:nth-child(1) {
-     bottom: 0;
-     left: 10px;
-    }  
-    &:nth-child(2) {
-      bottom: 0;
-      right: 8px;
-    }
-    &:nth-child(3) {
-      bottom: 0;
-      left: 25%;
-    }
-    &:nth-child(4) {
-      top: 0;
-      left: 24px;
-    }
-    &:nth-child(5) {
-      top: 0;
-      right: 4px;
-    }
+    bottom: 0;
+    left: 10px;
+  }  
+  &:nth-child(2) {
+    bottom: 0;
+    right: 8px;
+  }
+  &:nth-child(3) {
+    bottom: 0;
+    left: 25%;
+  }
+  &:nth-child(4) {
+    top: 0;
+    left: 24px;
+  }
+  &:nth-child(5) {
+    top: 0;
+    right: 4px;
+  }
 `;

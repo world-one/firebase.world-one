@@ -18,8 +18,19 @@ const Sun = styled.div`
     top: -2%;
     height: 104%;
     width: 104%;
-    box-shadow: 0 0 60px yellow;
     border-radius: 50%;
+    animation: sun 1s linear infinite alternate;
+  }
+
+  @keyframes sun {
+    0% {
+      box-shadow: 0 0 60px yellow;
+      transform: scale(1);
+    }
+    100% {
+      box-shadow: 0 0 40px yellow;
+      transform: scale(1.02);
+    }
   }
 `;
 
